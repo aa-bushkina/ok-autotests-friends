@@ -1,0 +1,1 @@
+# Autotests to check the functionality of the "Friends" section of the OK 
