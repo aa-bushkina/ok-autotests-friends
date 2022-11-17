@@ -1,34 +1,48 @@
 package org.example.pages;
 
-import com.codeborne.selenide.SelenideElement;
 import org.jetbrains.annotations.NotNull;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.LoadableComponent;
 
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
-public class NewsPage
+public class NewsPage extends LoadableComponent<NewsPage>
 {
 
   @NotNull
-  private final SelenideElement SEARCH_FIELD = $(byName("st.query"));
+  private final By SEARCH_FIELD = byName("st.query");
   @NotNull
-  private final SelenideElement USER =
-    $(byXpath("//div[contains(@class, 'card-caption__a0i64 card-caption-small__02cy5') and " +
-      "text() = 'technoPol4 technoPol4']"));
+  private final By USER =
+    byXpath("//div[contains(@class, 'card-caption__a0i64 card-caption-small__02cy5') and " +
+      "text() = 'technoPol4 technoPol4']");
 
-  private final SelenideElement FRIENDS_SECTION = $(byXpath("//div[@data-l='t,userFriend']"));
+  private final By FRIENDS_SECTION = byXpath("//div[@data-l='t,userFriend']");
 
   public UserPage findUser(@NotNull final String name)
   {
-    SEARCH_FIELD.setValue(name);
-    USER.click();
+    $(SEARCH_FIELD).setValue(name);
+    $(USER).click();
     return new UserPage();
   }
 
   public FriendsPage goToFriends()
   {
-    FRIENDS_SECTION.click();
+    $(FRIENDS_SECTION).click();
     return new FriendsPage();
+  }
+
+
+  @Override
+  protected void load()
+  {
+
+  }
+
+  @Override
+  protected void isLoaded() throws Error
+  {
+
   }
 }

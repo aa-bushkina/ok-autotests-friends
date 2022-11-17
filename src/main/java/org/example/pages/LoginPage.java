@@ -1,24 +1,38 @@
 package org.example.pages;
 
 import org.jetbrains.annotations.NotNull;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.LoadableComponent;
 
-import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 
-public class LoginPage
+public class LoginPage extends LoadableComponent<LoginPage>
 {
   @NotNull
-  private final String USERNAME_FIELD = "//*[@name='st.email']";
+  private final By USERNAME_FIELD = byName("st.email");
   @NotNull
-  private final String PSWD_FIELD = "//*[@name='st.password']";
+  private final By PSWD_FIELD = byName("st.password");
   @NotNull
-  private final String SIGNIN_BUTTON = "//*[@class='button-pro __wide']";
+  private final By SIGNIN_BUTTON = byClassName("button-pro __wide");
 
   public NewsPage logIn(@NotNull final String username, @NotNull final String password)
   {
-    $(byXpath(USERNAME_FIELD)).val(username);
-    $(byXpath(PSWD_FIELD)).val(password);
-    $(byXpath(SIGNIN_BUTTON)).click();
+    $(USERNAME_FIELD).val(username);
+    $(PSWD_FIELD).val(password);
+    $(SIGNIN_BUTTON).click();
     return new NewsPage();
+  }
+
+  @Override
+  protected void load()
+  {
+
+  }
+
+  @Override
+  protected void isLoaded() throws Error
+  {
+
   }
 }
