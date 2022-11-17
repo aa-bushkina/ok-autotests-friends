@@ -14,10 +14,11 @@ public class LoginPage
   @NotNull
   private final String SIGNIN_BUTTON = "//*[@class='button-pro __wide']";
 
-  public void logIn(@NotNull final String username, @NotNull final String password)
+  public NewsPage logIn(@NotNull final String username, @NotNull final String password)
   {
     $(byXpath(USERNAME_FIELD)).val(username);
     $(byXpath(PSWD_FIELD)).val(password);
     $(byXpath(SIGNIN_BUTTON)).click();
+    return new NewsPage();
   }
 }
