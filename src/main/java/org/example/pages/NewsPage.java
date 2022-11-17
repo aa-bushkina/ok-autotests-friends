@@ -15,7 +15,7 @@ public class NewsPage
   @NotNull
   private final SelenideElement USER =
     $(byXpath("//div[contains(@class, 'card-caption__a0i64 card-caption-small__02cy5') and " +
-      "text() = \"technoPol17 technoPol17\"]"));
+      "text() = 'technoPol4 technoPol4']"));
 
   private final SelenideElement FRIENDS_SECTION = $(byXpath("//div[@data-l='t,userFriend']"));
 
