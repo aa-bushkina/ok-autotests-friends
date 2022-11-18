@@ -4,13 +4,11 @@ import org.example.pages.FriendsPage;
 import org.example.pages.LoginPage;
 import org.example.pages.NewsPage;
 import org.example.pages.UserPage;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+import java.util.concurrent.TimeUnit;
 
+@Timeout(value = 10000, unit = TimeUnit.MILLISECONDS)
 public class InviteFriendTest extends BaseTest
 {
   final private String USERNAME = "technoPol5";
@@ -23,12 +21,10 @@ public class InviteFriendTest extends BaseTest
   protected FriendsPage friendsPage;
 
   @BeforeEach
-  public void logInAndAddFriend()
+  public void logIn()
   {
     loginPage = new LoginPage();
     newsPage = loginPage.logIn(USERNAME, PSWD);
-    userPage = newsPage.findUser(NAME_OF_SEARCH_USER);
-    userPage.addFriend();
   }
 
   @AfterEach
@@ -38,9 +34,32 @@ public class InviteFriendTest extends BaseTest
     userPage.cancelInvite();
   }
   @Test
+  @DisplayName("При добавлении в друзья, у добавляемого пользователя появляется в подписчиках добавляющий пользователь")
+  @Tag("development")
   public void addFriendShouldMakeNewSubscription()
   {
+    userPage = newsPage.findUser(NAME_OF_SEARCH_USER);
+    userPage.addFriend();
     newsPage = new NewsPage();
     friendsPage = newsPage.goToFriends();
+  }
+
+  @Test
+  @DisplayName("При добавлении в друзья, у добавляющего пользователя появляется в подписках добавлямеый пользователь")
+  @Tag("development")
+  public void addFriendShouldMakeNewSubscriber()
+  {
+    userPage = newsPage.findUser(NAME_OF_SEARCH_USER);
+    userPage.addFriend();
+  }
+
+  @Test
+  @DisplayName("При добавлении в друзья выводится список возможных друзей")
+  @Tag("development")
+  public void addFriendShouldMakeSuggestPossibleFriends()
+  {
+    userPage = newsPage.findUser(NAME_OF_SEARCH_USER);
+    userPage.addFriend();
+
   }
 }
