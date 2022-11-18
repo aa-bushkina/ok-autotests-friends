@@ -1,13 +1,13 @@
 package org.example.pages;
 
-import org.example.pages.utils.FriendsStatus;
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.LoadableComponent;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.*;
+import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class UserPage extends LoadablePage
 {
@@ -18,7 +18,7 @@ public class UserPage extends LoadablePage
   @NotNull
   private final By OK_LOGO = byId("toolbar_logo_id");
   @NotNull
-  private final String CANCEL_INVITE_BUTTON = "//*[@class='dropdown_cnt u-menu_lvl2']//*[@class='u-menu_a']";
+  private final String CANCEL_INVITE_BUTTON = "//*[@data-l='outlandertarget,invite,t,invite']//*[@class='u-menu_a']";
 
 
   @Override
@@ -35,10 +35,11 @@ public class UserPage extends LoadablePage
 
   public void cancelInvite()
   {
-    $(byXpath(SEND_INVITE_BUTTON)).click();
-    $(byXpath(CANCEL_INVITE_BUTTON)).click();
-    $(byXpath(ADD_FRIEND_BUTTON)).should(appear);
-    $(byXpath(ADD_FRIEND_BUTTON)).shouldHave(text("Добавить в друзья"));
+    $x(SEND_INVITE_BUTTON).click();
+    $x(CANCEL_INVITE_BUTTON).hover().shouldBe(visible);
+    $x(CANCEL_INVITE_BUTTON).click();
+    $x(ADD_FRIEND_BUTTON).should(appear);
+    $x(ADD_FRIEND_BUTTON).shouldHave(text("Добавить в друзья"));
   }
 
   public String getFriendButtonText()
