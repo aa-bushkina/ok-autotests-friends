@@ -1,10 +1,8 @@
 package org.example.pages.elements;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
 import org.example.pages.LoginPage;
 
-import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class ExitPopUp
@@ -16,5 +14,10 @@ public class ExitPopUp
   {
     $x(EXIT_BTN).shouldBe(Condition.visible).click();
     return new LoginPage();
+  }
+
+  public void clickCancelButton()
+  {
+    $x(CANCEL_BTN).shouldBe(Condition.visible).click();
   }
 }

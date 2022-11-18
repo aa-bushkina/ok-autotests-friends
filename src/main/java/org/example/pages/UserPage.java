@@ -11,13 +11,9 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class UserPage extends LoadablePage
 {
-  @NotNull
   private final String ADD_FRIEND_BUTTON = "//*[@data-l='outlandertarget,invite,t,invite']";
-  @NotNull
   private final String SEND_INVITE_BUTTON = "//*[@class='u-menu_a toggle-dropdown']";
-  @NotNull
   private final By OK_LOGO = byId("toolbar_logo_id");
-  @NotNull
   private final String CANCEL_INVITE_BUTTON = "//*[@data-l='outlandertarget,invite,t,invite']//*[@class='u-menu_a']";
 
 

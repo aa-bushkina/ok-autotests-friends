@@ -10,10 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class NewsPage extends LoadablePage
 {
-
-  @NotNull
   private final By SEARCH_FIELD = byName("st.query");
-  @NotNull
   private final By USER =
     byXpath("//div[contains(@class, 'card-caption__a0i64 card-caption-small__02cy5') and " +
       "text() = 'technoPol4 technoPol4']");
@@ -32,7 +29,6 @@ public class NewsPage extends LoadablePage
     //$(By.xpath(FRIENDS_SECTION)).click();
     return new FriendsPage();
   }
-
 
   @Override
   protected void isLoaded() throws Error

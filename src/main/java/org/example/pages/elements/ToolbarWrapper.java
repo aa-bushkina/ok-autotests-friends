@@ -8,6 +8,7 @@ public class ToolbarWrapper
 {
   public final String ACTION_BTN = ".//*[@class='toolbar_dropdown_w h-mod']";
   public final String LOGO_BTN = "//*[]";
+  public final String SEARCH_FIELD = "//*[]";
   private final SelenideElement item;
 
   public ToolbarWrapper(final SelenideElement item)

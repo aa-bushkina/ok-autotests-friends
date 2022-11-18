@@ -61,6 +61,5 @@ public class InviteFriendTest extends BaseTest
   {
     userPage = newsPage.findUser(NAME_OF_SEARCH_USER);
     userPage.addFriend();
-
   }
 }
