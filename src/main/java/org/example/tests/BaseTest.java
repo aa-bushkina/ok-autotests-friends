@@ -8,6 +8,7 @@ import org.example.pages.LoginPage;
 import org.example.pages.NewsPage;
 import org.example.pages.UserPage;
 import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,6 +26,12 @@ public class BaseTest
     Configuration.driverManagerEnabled = true;
     Configuration.holdBrowserOpen = true;
     Selenide.open(LOGIN_URL);
+  }
+
+  @AfterAll
+  public static void exit()
+  {
+    Selenide.closeWebDriver();
   }
 
 

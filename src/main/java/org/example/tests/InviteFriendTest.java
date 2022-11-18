@@ -28,10 +28,11 @@ public class InviteFriendTest extends BaseTest
   }
 
   @AfterEach
-  public void deleteFriendInvite()
+  public void deleteFriendInviteAndExit()
   {
     userPage = newsPage.findUser(NAME_OF_SEARCH_USER);
     userPage.cancelInvite();
+    userPage.toolbar.clickActionButton().clickExit().clickExitButton();
   }
   @Test
   @DisplayName("При добавлении в друзья, у добавляемого пользователя появляется в подписчиках добавляющий пользователь")
