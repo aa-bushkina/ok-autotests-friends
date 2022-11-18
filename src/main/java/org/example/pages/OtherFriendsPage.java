@@ -1,6 +1,8 @@
 package org.example.pages;
 
-public class FriendsPage extends LoadablePage
+import org.openqa.selenium.support.ui.LoadableComponent;
+
+public class OtherFriendsPage extends LoadablePage
 {
 /*
   @NotNull
@@ -8,6 +10,7 @@ public class FriendsPage extends LoadablePage
   @NotNull
   private final By SUBSCRIPTIONS_SECTION = By.className("nav-side_tx ellip");
 */
+
 
   @Override
   protected void isLoaded() throws Error

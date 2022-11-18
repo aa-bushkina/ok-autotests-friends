@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
-public class NewsPage extends LoadableComponent<NewsPage>
+public class NewsPage extends LoadablePage
 {
 
   @NotNull
@@ -29,16 +29,10 @@ public class NewsPage extends LoadableComponent<NewsPage>
 
   public FriendsPage goToFriends()
   {
-    $(By.xpath(FRIENDS_SECTION)).click();
+    //$(By.xpath(FRIENDS_SECTION)).click();
     return new FriendsPage();
   }
 
-
-  @Override
-  protected void load()
-  {
-
-  }
 
   @Override
   protected void isLoaded() throws Error

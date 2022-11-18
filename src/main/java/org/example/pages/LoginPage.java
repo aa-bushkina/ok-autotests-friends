@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 
-public class LoginPage extends LoadableComponent<LoginPage>
+public class LoginPage extends LoadablePage
 {
   @NotNull
   private final By USERNAME_FIELD = byName("st.email");
@@ -24,11 +24,7 @@ public class LoginPage extends LoadableComponent<LoginPage>
     return new NewsPage();
   }
 
-  @Override
-  protected void load()
-  {
 
-  }
 
   @Override
   protected void isLoaded() throws Error

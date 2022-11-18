@@ -5,12 +5,11 @@ import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.LoadableComponent;
 
-import static com.codeborne.selenide.Condition.disappear;
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 
-public class UserPage extends LoadableComponent<UserPage>
+public class UserPage extends LoadablePage
 {
   @NotNull
   private final String ADD_FRIEND_BUTTON = "//*[@data-l='outlandertarget,invite,t,invite']";
@@ -21,10 +20,6 @@ public class UserPage extends LoadableComponent<UserPage>
   @NotNull
   private final String CANCEL_INVITE_BUTTON = "//*[@class='dropdown_cnt u-menu_lvl2']//*[@class='u-menu_a']";
 
-  @Override
-  protected void load()
-  {
-  }
 
   @Override
   protected void isLoaded() throws Error
@@ -42,6 +37,7 @@ public class UserPage extends LoadableComponent<UserPage>
   {
     $(byXpath(SEND_INVITE_BUTTON)).click();
     $(byXpath(CANCEL_INVITE_BUTTON)).click();
+    $(byXpath(ADD_FRIEND_BUTTON)).should(appear);
     $(byXpath(ADD_FRIEND_BUTTON)).shouldHave(text("Добавить в друзья"));
   }
 
