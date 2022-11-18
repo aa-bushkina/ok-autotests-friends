@@ -36,7 +36,7 @@ public class UserPage extends LoadablePage
   public void cancelInvite()
   {
     $x(SEND_INVITE_BUTTON).click();
-    $x(CANCEL_INVITE_BUTTON).hover().shouldBe(visible);
+    $x(CANCEL_INVITE_BUTTON).shouldBe(visible);
     $x(CANCEL_INVITE_BUTTON).click();
     $x(ADD_FRIEND_BUTTON).should(appear);
     $x(ADD_FRIEND_BUTTON).shouldHave(text("Добавить в друзья"));
