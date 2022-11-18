@@ -32,17 +32,19 @@ public class InviteFriendTest extends BaseTest
   {
     userPage = newsPage.findUser(NAME_OF_SEARCH_USER);
     userPage.cancelInvite();
-    userPage.toolbar.clickActionButton().clickExit().clickExitButton();
+    userPage.getToolbar().clickActionButton().clickExit().clickExitButton();
   }
+
   @Test
   @DisplayName("При добавлении в друзья, у добавляемого пользователя появляется в подписчиках добавляющий пользователь")
   @Tag("development")
   public void addFriendShouldMakeNewSubscription()
   {
-    userPage = newsPage.findUser(NAME_OF_SEARCH_USER);
-    userPage.addFriend();
-    newsPage = new NewsPage();
-    friendsPage = newsPage.goToFriends();
+    newsPage = newsPage
+      .findUser(NAME_OF_SEARCH_USER)
+      .addFriend()
+      .goToNewsPage();
+    newsPage.goToFriends().goToOutgoingFriendsRequests();
   }
 
   @Test
