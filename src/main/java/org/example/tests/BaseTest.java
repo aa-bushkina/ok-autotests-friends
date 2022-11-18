@@ -3,15 +3,21 @@ package org.example.tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.example.pages.FriendsPage;
+import org.example.pages.LoginPage;
+import org.example.pages.NewsPage;
+import org.example.pages.UserPage;
 import org.jetbrains.annotations.NotNull;
-import org.testng.annotations.BeforeClass;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 public class BaseTest
 {
   @NotNull
   static final private String LOGIN_URL = "https://ok.ru/";
 
-  @BeforeClass
+  @BeforeAll
   public static void setUp()
   {
     WebDriverManager.chromedriver().setup();
@@ -20,4 +26,6 @@ public class BaseTest
     Configuration.holdBrowserOpen = true;
     Selenide.open(LOGIN_URL);
   }
+
+
 }

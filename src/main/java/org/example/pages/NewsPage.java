@@ -18,7 +18,7 @@ public class NewsPage extends LoadableComponent<NewsPage>
     byXpath("//div[contains(@class, 'card-caption__a0i64 card-caption-small__02cy5') and " +
       "text() = 'technoPol4 technoPol4']");
 
-  private final By FRIENDS_SECTION = byXpath("//div[@data-l='t,userFriend']");
+  private final String FRIENDS_SECTION = "//a[@data-l='t,userFriend']";
 
   public UserPage findUser(@NotNull final String name)
   {
@@ -29,7 +29,7 @@ public class NewsPage extends LoadableComponent<NewsPage>
 
   public FriendsPage goToFriends()
   {
-    $(FRIENDS_SECTION).click();
+    $(By.xpath(FRIENDS_SECTION)).click();
     return new FriendsPage();
   }
 

@@ -14,7 +14,7 @@ public class LoginPage extends LoadableComponent<LoginPage>
   @NotNull
   private final By PSWD_FIELD = byName("st.password");
   @NotNull
-  private final By SIGNIN_BUTTON = byClassName("button-pro __wide");
+  private final By SIGNIN_BUTTON = byXpath("//input[@data-l='t,sign_in']");
 
   public NewsPage logIn(@NotNull final String username, @NotNull final String password)
   {
