@@ -5,6 +5,8 @@ import org.example.pages.LoginPage;
 import org.example.pages.NewsPage;
 import org.example.pages.UserPage;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,7 +15,8 @@ public class InviteFriendTest extends BaseTest
 {
   final private String USERNAME = "technoPol5";
   final private String PSWD = "technoPolis2022";
-  final private String NAME_OF_SEARCH_USER = "technoPol4";
+  final private String NAME_OF_SEARCH_USER1 = "technoPol4 technoPol4";
+  final private String NAME_OF_SEARCH_USER2 = "technoPol22 technoPol22";
 
   protected LoginPage loginPage;
   protected NewsPage newsPage;
@@ -30,24 +33,28 @@ public class InviteFriendTest extends BaseTest
   @AfterEach
   public void deleteFriendInviteAndExit()
   {
-    userPage = newsPage.findUser(NAME_OF_SEARCH_USER);
-    userPage.cancelInvite();
-    userPage.getToolbar().clickActionButton().clickExit().clickExitButton();
+    newsPage.getToolbar()
+      .clickActionButton()
+      .clickExit()
+      .clickExitButton();
   }
 
-  @Test
   @DisplayName("При добавлении в друзья, у добавляемого пользователя появляется в подписчиках добавляющий пользователь")
   @Tag("development")
-  public void addFriendShouldMakeNewSubscription()
+  @ParameterizedTest
+  @ValueSource(strings = {NAME_OF_SEARCH_USER1, NAME_OF_SEARCH_USER2})
+  public void addFriendShouldMakeNewSubscription(final String name)
   {
-    newsPage = newsPage
-      .findUser(NAME_OF_SEARCH_USER)
+    newsPage.findUser(name)
       .addFriend()
       .goToNewsPage();
-    newsPage.goToFriends().goToOutgoingFriendsRequests();
+    newsPage.goToFriends()
+      .goToOutgoingFriendsRequests();
+
+    newsPage.findUser(name).cancelInvite().goToNewsPage();
   }
 
-  @Test
+/*  @Test
   @DisplayName("При добавлении в друзья, у добавляющего пользователя появляется в подписках добавлямеый пользователь")
   @Tag("development")
   public void addFriendShouldMakeNewSubscriber()
@@ -63,5 +70,5 @@ public class InviteFriendTest extends BaseTest
   {
     userPage = newsPage.findUser(NAME_OF_SEARCH_USER);
     userPage.addFriend();
-  }
+  }*/
 }

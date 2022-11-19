@@ -1,15 +1,14 @@
-package org.example.pages.elements;
+package org.example.pages.elements.toolbar;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.jetbrains.annotations.NotNull;
 
 public class ActionsDropDownList
 {
   public final String exitButtonLoc = ".//*[@class='lp']";
   private final SelenideElement item;
 
-  public ActionsDropDownList(@NotNull final SelenideElement item)
+  public ActionsDropDownList(final SelenideElement item)
   {
     this.item = item;
   }

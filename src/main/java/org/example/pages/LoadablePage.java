@@ -1,6 +1,6 @@
 package org.example.pages;
 
-import org.example.pages.elements.Toolbar;
+import org.example.pages.elements.toolbar.Toolbar;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.LoadableComponent;
 

@@ -1,4 +1,4 @@
-package org.example.pages.elements;
+package org.example.pages.elements.toolbar;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -25,7 +25,7 @@ public class Toolbar
   public SearchDropDownList searchUser(final String str)
   {
     item.$x(SEARCH_FIELD).shouldBe(Condition.visible).setValue(str);
-    return new SearchDropDownList(item);
+    return new SearchDropDownList(str, item);
   }
 
   public NewsPage clickLogo()
