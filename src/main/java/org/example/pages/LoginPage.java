@@ -1,5 +1,7 @@
 package org.example.pages;
 
+import org.example.pages.elements.toolbar.Toolbar;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public class LoginPage extends LoadablePage
@@ -15,8 +17,11 @@ public class LoginPage extends LoadablePage
     $x(SIGNIN_BUTTON).click();
     return new NewsPage();
   }
-
-
+  @Override
+  public Toolbar getToolbar()
+  {
+    return super.getToolbar();
+  }
   @Override
   protected void isLoaded() throws Error
   {

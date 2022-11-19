@@ -4,6 +4,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.example.pages.NewsPage;
 
+import static com.codeborne.selenide.Selenide.$;
+
 public class Toolbar
 {
   public final String ACTION_BTN = ".//*[@class='toolbar_dropdown_w h-mod']";
@@ -28,7 +30,7 @@ public class Toolbar
     return new SearchDropDownList(str, item);
   }
 
-  public NewsPage clickLogo()
+  public NewsPage goToNewsPage()
   {
     item.$x(LOGO_BTN).shouldBe(Condition.visible).click();
     return new NewsPage();

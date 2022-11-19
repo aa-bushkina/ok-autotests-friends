@@ -22,5 +22,4 @@ public class NavigationBlock
       .click();
     return new FriendsPage();
   }
-
 }

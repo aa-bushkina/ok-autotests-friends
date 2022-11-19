@@ -1,5 +1,6 @@
 package org.example.pages;
 
+import org.example.pages.elements.toolbar.Toolbar;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.*;
@@ -15,6 +16,11 @@ public class UserPage extends LoadablePage
   private final By OK_LOGO = byId("toolbar_logo_id");
   private final String CANCEL_INVITE_BTN = "//*[@data-l='outlandertarget,invite,t,invite']//*[@class='u-menu_a']";
 
+  @Override
+  public Toolbar getToolbar()
+  {
+    return super.getToolbar();
+  }
 
   @Override
   protected void isLoaded() throws Error
@@ -44,10 +50,5 @@ public class UserPage extends LoadablePage
     return $(byXpath(SEND_INVITE_BUTTON)).text();
   }
 
-  public NewsPage goToNewsPage()
-  {
-    $(OK_LOGO).click();
-    return new NewsPage();
-  }
 
 }

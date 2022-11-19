@@ -11,6 +11,11 @@ public abstract class LoadablePage extends LoadableComponent<FriendsPage>
 
   protected Toolbar toolbar = new Toolbar($x(TOOLBAR));
 
+  public Toolbar getToolbar()
+  {
+    return toolbar;
+  }
+
   @Override
   protected void load()
   {

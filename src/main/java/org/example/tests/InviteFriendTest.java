@@ -10,6 +10,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+
 @Timeout(value = 10000, unit = TimeUnit.MILLISECONDS)
 public class InviteFriendTest extends BaseTest
 {
@@ -33,26 +36,33 @@ public class InviteFriendTest extends BaseTest
   @AfterEach
   public void exitOK()
   {
-    newsPage.exit();
+    newsPage.getToolbar().clickActionButton().clickExit().clickExitButton();
   }
 
-  @DisplayName("При добавлении в друзья, у добавляемого пользователя появляется в подписчиках добавляющий пользователь")
+  @DisplayName("При добавлении в друзья, у добавляющего пользователя появляется в подписках добавлямеый пользователь")
   @Tag("development")
   @ParameterizedTest
   @ValueSource(strings = {NAME_OF_SEARCH_USER1, NAME_OF_SEARCH_USER2})
   public void addFriendShouldMakeNewSubscription(final String name)
   {
-    newsPage.findUser(name)
-      .addFriend()
-      .goToNewsPage();
-    newsPage.goToFriends()
-      .goToOutgoingFriendsRequests();
+    friendsPage = newsPage.goToFriends();
+    //final int countRequests = friendsPage.getCountOutgoingRequests();
+    newsPage = friendsPage.getToolbar().goToNewsPage();
 
-    newsPage.findUser(name).cancelInvite().goToNewsPage();
+    newsPage.findUser(name).addFriend().getToolbar().goToNewsPage();
+
+    friendsPage = newsPage.goToFriends();
+    final int newCountRequests = friendsPage.getCountOutgoingRequests();
+    assertThat(newCountRequests, equalTo( 1));
+
+    friendsPage.getFriendSectionsBlock().clickOutgoingRequests();
+    assertThat(friendsPage.getRequestsBlock().findRequestToUser(name), equalTo(name));
+
+    newsPage.findUser(name).cancelInvite().getToolbar().goToNewsPage();
   }
 
 /*  @Test
-  @DisplayName("При добавлении в друзья, у добавляющего пользователя появляется в подписках добавлямеый пользователь")
+  @DisplayName("При добавлении в друзья, у добавляемого пользователя появляется в подписчиках добавляющий пользователь")
   @Tag("development")
   public void addFriendShouldMakeNewSubscriber()
   {
