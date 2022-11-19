@@ -1,12 +1,8 @@
 package org.example.tests;
 
-import org.example.pages.FriendsPage;
-import org.example.pages.LoginPage;
-import org.example.pages.NewsPage;
-import org.example.pages.UserPage;
-import org.example.pages.utils.PageFactory;
-import org.example.pages.utils.PageType;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -19,28 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 @Timeout(value = 10000, unit = TimeUnit.MILLISECONDS)
 public class InviteFriendTest extends BaseTest
 {
-  final private String USERNAME = "technoPol5";
-  final private String PSWD = "technoPolis2022";
   final private String NAME_OF_SEARCH_USER1 = "technoPol4 technoPol4";
   final private String NAME_OF_SEARCH_USER2 = "technoPol22 technoPol22";
-
-  protected LoginPage loginPage;
-  protected NewsPage newsPage;
-  protected UserPage userPage;
-  protected FriendsPage friendsPage;
-
-  @BeforeEach
-  public void logIn()
-  {
-    loginPage = (LoginPage) PageFactory.createPage(PageType.Login);
-    newsPage = loginPage.logIn(USERNAME, PSWD);
-  }
-
-  @AfterEach
-  public void exitOK()
-  {
-    newsPage.getToolbar().clickActionButton().clickExit().clickExitButton();
-  }
 
   @DisplayName("При добавлении в друзья, у добавляющего пользователя появляется в подписках добавлямеый пользователь")
   @Tag("development")
