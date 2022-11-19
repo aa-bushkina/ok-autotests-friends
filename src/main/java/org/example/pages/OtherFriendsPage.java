@@ -1,10 +1,6 @@
 package org.example.pages;
 
-import com.codeborne.selenide.Condition;
 import org.example.pages.elements.toolbar.Toolbar;
-import org.openqa.selenium.support.ui.LoadableComponent;
-
-import static com.codeborne.selenide.Selenide.$x;
 
 public class OtherFriendsPage extends LoadablePage
 {

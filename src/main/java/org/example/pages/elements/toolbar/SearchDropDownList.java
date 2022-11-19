@@ -1,7 +1,6 @@
 package org.example.pages.elements.toolbar;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.example.pages.UserPage;
 

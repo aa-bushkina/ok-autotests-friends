@@ -4,8 +4,6 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.example.pages.NewsPage;
 
-import static com.codeborne.selenide.Selenide.$;
-
 public class Toolbar
 {
   public final String ACTION_BTN = ".//*[@class='toolbar_dropdown_w h-mod']";

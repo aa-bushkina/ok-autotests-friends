@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Timeout(value = 10000, unit = TimeUnit.MILLISECONDS)
 public class InviteFriendTest extends BaseTest

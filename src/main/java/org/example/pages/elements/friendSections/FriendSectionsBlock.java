@@ -2,7 +2,6 @@ package org.example.pages.elements.friendSections;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.example.pages.FriendsPage;
 
 import static com.codeborne.selenide.Selenide.$x;
 

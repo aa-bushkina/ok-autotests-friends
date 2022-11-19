@@ -2,10 +2,8 @@ package org.example.pages;
 
 import com.codeborne.selenide.Condition;
 import org.example.pages.elements.toolbar.Toolbar;
-import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
