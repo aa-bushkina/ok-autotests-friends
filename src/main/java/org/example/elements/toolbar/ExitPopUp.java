@@ -1,4 +1,4 @@
-package org.example.pages.elements.toolbar;
+package org.example.elements.toolbar;
 
 import com.codeborne.selenide.Condition;
 import org.example.pages.LoginPage;

@@ -3,10 +3,7 @@ package org.example.tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.example.pages.FriendsPage;
-import org.example.pages.LoginPage;
-import org.example.pages.NewsPage;
-import org.example.pages.UserPage;
+import org.example.pages.*;
 import org.example.pages.utils.PageFactory;
 import org.example.pages.utils.PageType;
 import org.junit.jupiter.api.AfterEach;
@@ -16,13 +13,14 @@ import org.junit.jupiter.api.BeforeEach;
 public class BaseTest
 {
   static final private String LOGIN_URL = "https://ok.ru/";
-  final private String USERNAME = "technoPol5";
-  final private String PSWD = "technoPolis2022";
+  final protected String USERNAME = "technoPol5";
+  final protected String PSWD = "technoPolis2022";
 
   protected LoginPage loginPage;
   protected NewsPage newsPage;
   protected UserPage userPage;
   protected FriendsPage friendsPage;
+  protected OtherFriendsPage otherFriendsPage;
 
   @BeforeAll
   public static void setUp()

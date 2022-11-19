@@ -1,4 +1,4 @@
-package org.example.pages.elements.friendSections;
+package org.example.elements.friendPage;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;

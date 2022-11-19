@@ -1,6 +1,6 @@
 package org.example.pages;
 
-import org.example.pages.elements.toolbar.Toolbar;
+import org.example.elements.toolbar.Toolbar;
 import org.openqa.selenium.support.ui.LoadableComponent;
 
 import static com.codeborne.selenide.Selenide.$x;

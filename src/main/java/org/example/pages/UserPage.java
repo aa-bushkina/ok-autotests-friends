@@ -1,7 +1,8 @@
 package org.example.pages;
 
 import com.codeborne.selenide.Condition;
-import org.example.pages.elements.toolbar.Toolbar;
+import org.example.elements.toolbar.Toolbar;
+import org.example.elements.userPage.HorizontalNavigationBlock;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -13,11 +14,23 @@ public class UserPage extends LoadablePage
   private final String ADD_FRIEND_BTN = "//*[@data-l='outlandertarget,invite,t,invite']";
   private final String SEND_INVITE_BUTTON = "//*[@class='u-menu_a toggle-dropdown']";
   private final String CANCEL_INVITE_BTN = "//*[@data-l='outlandertarget,invite,t,invite']//*[@class='u-menu_a']";
+  private final String NAVIGATION_BLOCK = "//*[@data-l='t,horizontalNavigation']";
+  final private HorizontalNavigationBlock navigationBlock;
+
+  public UserPage()
+  {
+    this.navigationBlock = new HorizontalNavigationBlock($x(NAVIGATION_BLOCK));
+  }
 
   @Override
   public Toolbar getToolbar()
   {
     return super.getToolbar();
+  }
+
+  public HorizontalNavigationBlock getNavigationBlock()
+  {
+    return navigationBlock;
   }
 
   @Override
@@ -26,6 +39,7 @@ public class UserPage extends LoadablePage
     $x(ADD_FRIEND_BTN).shouldBe(Condition.visible.because("Не отобразилась кнопка добавления в друзья"));
     $x(SEND_INVITE_BUTTON).shouldBe(appear.because("Не существует кнопка отмены заявки в друзья"));
     $x(CANCEL_INVITE_BTN).shouldBe(appear.because("Не существует кнопка отмененной заявки в друзья"));
+    $x(NAVIGATION_BLOCK).shouldBe(appear.because("Не существует панель навигации"));
   }
 
   public UserPage addFriend()
@@ -44,11 +58,4 @@ public class UserPage extends LoadablePage
     $x(ADD_FRIEND_BTN).shouldHave(text("Добавить в друзья"));
     return this;
   }
-
-  public String getFriendButtonText()
-  {
-    return $(byXpath(SEND_INVITE_BUTTON)).text();
-  }
-
-
 }

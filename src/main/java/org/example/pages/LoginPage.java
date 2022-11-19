@@ -1,7 +1,7 @@
 package org.example.pages;
 
 import com.codeborne.selenide.Condition;
-import org.example.pages.elements.toolbar.Toolbar;
+import org.example.elements.toolbar.Toolbar;
 
 import static com.codeborne.selenide.Selenide.$x;
 

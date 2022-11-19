@@ -1,4 +1,4 @@
-package org.example.pages.elements.newsSections;
+package org.example.elements.newsPage;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;

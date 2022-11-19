@@ -1,9 +1,9 @@
 package org.example.pages;
 
 import com.codeborne.selenide.Condition;
-import org.example.pages.elements.friendSections.FriendSectionsBlock;
-import org.example.pages.elements.friendSections.RequestsBlock;
-import org.example.pages.elements.toolbar.Toolbar;
+import org.example.elements.friendPage.FriendSectionsBlock;
+import org.example.elements.friendPage.RequestsBlock;
+import org.example.elements.toolbar.Toolbar;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -39,12 +39,7 @@ public class FriendsPage extends LoadablePage
   @Override
   protected void isLoaded() throws Error
   {
-    $x(FRIEND_SECTIONS_BLOCK).shouldBe(Condition.visible.because("Не отобразился блок друзей"));
+    $x(FRIEND_SECTIONS_BLOCK).shouldBe(Condition.visible.because("Не отобразился блок секций друзей"));
     $x(REQUESTS_BLOCK).shouldBe(Condition.visible.because("Не отобразился блок запросов"));
-  }
-
-  public int getCountOutgoingRequests()
-  {
-    return friendSectionsBlock.getCountOutgoingRequests();
   }
 }

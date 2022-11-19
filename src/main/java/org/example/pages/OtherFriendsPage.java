@@ -1,29 +1,45 @@
 package org.example.pages;
 
-import org.example.pages.elements.toolbar.Toolbar;
+import com.codeborne.selenide.Condition;
+import org.example.elements.otherFriendsPage.OtherFriendSectionsBlock;
+import org.example.elements.otherFriendsPage.OtherSubscribersBlock;
+import org.example.elements.toolbar.Toolbar;
+
+import static com.codeborne.selenide.Selenide.$x;
 
 public class OtherFriendsPage extends LoadablePage
 {
-/*
-  @NotNull
-  private final By FRIEND_SECTION = By.xpath("nav-side_i-w");
-  @NotNull
-  private final By SUBSCRIPTIONS_SECTION = By.className("nav-side_tx ellip");
-*/
+  private final String FRIEND_SECTIONS_BLOCK = "//*[@id='FriendFriendsCatalogRB']";
+  private final String SUBSCRIBERS_BLOCK = "//*[@id='hook_Block_FriendSubscribersPageMRB']";
+  final private OtherFriendSectionsBlock friendSectionsBlock;
+  final private OtherSubscribersBlock requestsBlock;
+
+  public OtherFriendsPage()
+  {
+    this.friendSectionsBlock = new OtherFriendSectionsBlock($x(FRIEND_SECTIONS_BLOCK));
+    this.requestsBlock = new OtherSubscribersBlock($x(SUBSCRIBERS_BLOCK));
+  }
+
+  public OtherFriendSectionsBlock getOtherFriendSectionsBlock()
+  {
+    return friendSectionsBlock;
+  }
+
+  public OtherSubscribersBlock getOtherSubscribersBlock()
+  {
+    return requestsBlock;
+  }
 
   @Override
   public Toolbar getToolbar()
   {
     return super.getToolbar();
   }
+
   @Override
   protected void isLoaded() throws Error
   {
-    // $x(NAVIGATION_BLOCK).shouldBe(Condition.visible.because("Не отобразился блок навигации по странице"));
-
-  }
-
-  public void goToOutgoingFriendsRequests()
-  {
+    $x(FRIEND_SECTIONS_BLOCK).shouldBe(Condition.visible.because("Не отобразился блок секций друзей"));
+    $x(SUBSCRIBERS_BLOCK).shouldBe(Condition.visible.because("Не отобразился блок подписчиков"));
   }
 }
