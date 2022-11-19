@@ -12,6 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Timeout(value = 10000, unit = TimeUnit.MILLISECONDS)
 public class InviteFriendTest extends BaseTest
@@ -45,18 +47,14 @@ public class InviteFriendTest extends BaseTest
   @ValueSource(strings = {NAME_OF_SEARCH_USER1, NAME_OF_SEARCH_USER2})
   public void addFriendShouldMakeNewSubscription(final String name)
   {
-    friendsPage = newsPage.goToFriends();
-    //final int countRequests = friendsPage.getCountOutgoingRequests();
-    newsPage = friendsPage.getToolbar().goToNewsPage();
-
     newsPage.findUser(name).addFriend().getToolbar().goToNewsPage();
 
     friendsPage = newsPage.goToFriends();
-    final int newCountRequests = friendsPage.getCountOutgoingRequests();
-    assertThat(newCountRequests, equalTo( 1));
 
     friendsPage.getFriendSectionsBlock().clickOutgoingRequests();
-    assertThat(friendsPage.getRequestsBlock().findRequestToUser(name), equalTo(name));
+    assertAll(
+      () -> assertThat(friendsPage.getCountOutgoingRequests(), equalTo(1)),
+      () -> assertThat(friendsPage.getRequestsBlock().findRequestToUser(name), equalTo(name)));
 
     newsPage.findUser(name).cancelInvite().getToolbar().goToNewsPage();
   }

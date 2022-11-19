@@ -1,5 +1,6 @@
 package org.example.pages;
 
+import com.codeborne.selenide.Condition;
 import org.example.pages.elements.toolbar.Toolbar;
 
 import static com.codeborne.selenide.Selenide.$x;
@@ -17,14 +18,18 @@ public class LoginPage extends LoadablePage
     $x(SIGNIN_BUTTON).click();
     return new NewsPage();
   }
+
   @Override
   public Toolbar getToolbar()
   {
     return super.getToolbar();
   }
+
   @Override
   protected void isLoaded() throws Error
   {
-
+    $x(USERNAME_FIELD).shouldBe(Condition.visible.because("Не отобразилось поле ввода логина"));
+    $x(PSWD_FIELD).shouldBe(Condition.visible.because("Не отобразилось поле ввода пароля"));
+    $x(SIGNIN_BUTTON).shouldBe(Condition.visible.because("Не отобразилась кнопка входа"));
   }
 }
