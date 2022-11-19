@@ -1,21 +1,15 @@
 package org.example.pages;
 
 import org.example.pages.elements.toolbar.Toolbar;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.LoadableComponent;
 
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public abstract class LoadablePage extends LoadableComponent<FriendsPage>
 {
   protected String TOOLBAR = "//*[@class='toolbar_c']";
 
-  protected Toolbar toolbar = new Toolbar($(By.xpath(TOOLBAR)));
-
-  public Toolbar getToolbar()
-  {
-    return toolbar;
-  }
+  protected Toolbar toolbar = new Toolbar($x(TOOLBAR));
 
   @Override
   protected void load()
