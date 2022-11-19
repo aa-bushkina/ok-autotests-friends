@@ -4,6 +4,8 @@ import org.example.pages.FriendsPage;
 import org.example.pages.LoginPage;
 import org.example.pages.NewsPage;
 import org.example.pages.UserPage;
+import org.example.pages.utils.PageFactory;
+import org.example.pages.utils.PageType;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -30,7 +32,7 @@ public class InviteFriendTest extends BaseTest
   @BeforeEach
   public void logIn()
   {
-    loginPage = new LoginPage();
+    loginPage = (LoginPage) PageFactory.createPage(PageType.Login);
     newsPage = loginPage.logIn(USERNAME, PSWD);
   }
 
