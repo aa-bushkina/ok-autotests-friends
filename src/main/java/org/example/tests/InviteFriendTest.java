@@ -1,9 +1,10 @@
 package org.example.tests;
 
 import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Timeout;
+import org.example.pages.LoginPage;
+import org.example.pages.utils.PageFactory;
+import org.example.pages.utils.PageType;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -18,6 +19,19 @@ public class InviteFriendTest extends BaseTest
 {
   final private String NAME_OF_SEARCH_USER1 = "technoPol4 technoPol4";
   final private String NAME_OF_SEARCH_USER2 = "technoPol22 technoPol22";
+
+  @BeforeEach
+  public void logIn()
+  {
+    loginPage = (LoginPage) PageFactory.createPage(PageType.Login);
+    newsPage = loginPage.logIn(USERNAME, PSWD);
+  }
+
+  @AfterEach
+  public void logOut()
+  {
+    newsPage.getToolbar().clickActionButton().clickExit().clickExitButton();
+  }
 
   @DisplayName("При добавлении в друзья, у добавляющего пользователя появляется в подписках добавлямеый пользователь")
   @Tag("production")

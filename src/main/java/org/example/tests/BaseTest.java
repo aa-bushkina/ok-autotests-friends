@@ -35,17 +35,4 @@ public class BaseTest
     Configuration.holdBrowserOpen = true;
     Selenide.open(LOGIN_URL);
   }
-
-  @BeforeEach
-  public void logIn()
-  {
-    loginPage = (LoginPage) PageFactory.createPage(PageType.Login);
-    newsPage = loginPage.logIn(USERNAME, PSWD);
-  }
-
-  @AfterEach
-  public void logOut()
-  {
-    newsPage.getToolbar().clickActionButton().clickExit().clickExitButton();
-  }
 }
