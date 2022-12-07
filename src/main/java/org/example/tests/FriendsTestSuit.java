@@ -9,7 +9,6 @@ import org.junit.platform.suite.api.SuiteDisplayName;
 @IncludeTags({"development", "production"})
 @Suite
 @SuiteDisplayName("All friends Tests Suite")
-public class FriendsTestSuit
-{
+public class FriendsTestSuit {
 
 }

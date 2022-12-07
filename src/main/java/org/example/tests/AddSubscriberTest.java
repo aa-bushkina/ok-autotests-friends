@@ -15,21 +15,18 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @Timeout(value = 20000, unit = TimeUnit.MILLISECONDS)
-public class AddSubscriberTest extends BaseTest
-{
+public class AddSubscriberTest extends BaseTest {
   final private String NAME_OF_SEARCH_USER1 = "technoPol4 technoPol4";
   final private String NAME_OF_SEARCH_USER2 = "technoPol22 technoPol22";
 
   @BeforeEach
-  public void logIn()
-  {
+  public void logIn() {
     loginPage = (LoginPage) PageFactory.createPage(PageType.Login);
     newsPage = loginPage.logIn(USERNAME, PSWD);
   }
 
   @AfterEach
-  public void logOut()
-  {
+  public void logOut() {
     newsPage.getToolbar().clickActionButton().clickExit().clickExitButton();
   }
 
@@ -37,8 +34,7 @@ public class AddSubscriberTest extends BaseTest
   @Tag("development")
   @ParameterizedTest
   @ValueSource(strings = {NAME_OF_SEARCH_USER1, NAME_OF_SEARCH_USER2})
-  public void addFriendShouldMakeNewSubscriber(final String name)
-  {
+  public void addFriendShouldMakeNewSubscriber(final String name) {
     userPage = newsPage.findUser(name).addFriend();
 
     Selenide.refresh();

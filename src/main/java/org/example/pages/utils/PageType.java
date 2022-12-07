@@ -1,7 +1,6 @@
 package org.example.pages.utils;
 
-public enum PageType
-{
+public enum PageType {
   Login,
   News,
   Friends,

@@ -2,37 +2,27 @@ package org.example.pages;
 
 import com.codeborne.selenide.Condition;
 import org.example.elements.newsPage.NavigationBlock;
-import org.example.elements.toolbar.Toolbar;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-public class NewsPage extends LoadablePage
-{
+public class NewsPage extends LoadablePage implements WithToolbarPage {
   private final String NAVIGATION_BLOCK = "//*[@class='navigation']";
   final private NavigationBlock navigationBlock;
 
-  public NewsPage()
-  {
+  public NewsPage() {
     this.navigationBlock = new NavigationBlock($x(NAVIGATION_BLOCK));
   }
-  @Override
-  public Toolbar getToolbar()
-  {
-    return super.getToolbar();
-  }
-  public UserPage findUser(final String name)
-  {
+
+  public UserPage findUser(final String name) {
     return toolbar.searchUser(name).goToUserPage();
   }
 
-  public FriendsPage goToFriends()
-  {
+  public FriendsPage goToFriends() {
     return navigationBlock.clickFriends();
   }
 
   @Override
-  protected void isLoaded() throws Error
-  {
+  protected void isLoaded() throws Error {
     $x(NAVIGATION_BLOCK).shouldBe(Condition.visible.because("Не отобразился блок навигации по странице"));
   }
 }

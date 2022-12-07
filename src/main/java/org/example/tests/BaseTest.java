@@ -3,15 +3,10 @@ package org.example.tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.example.pages.NewsPage;
-import org.example.pages.UserPage;
-import org.example.pages.OtherFriendsPage;
-import org.example.pages.FriendsPage;
-import org.example.pages.LoginPage;
+import org.example.pages.*;
 import org.junit.jupiter.api.BeforeAll;
 
-public class BaseTest
-{
+public class BaseTest {
   static final private String LOGIN_URL = "https://ok.ru/";
   final protected String USERNAME = "technoPol5";
   final protected String PSWD = "technoPolis2022";
@@ -23,8 +18,7 @@ public class BaseTest
   protected OtherFriendsPage otherFriendsPage;
 
   @BeforeAll
-  public static void setUp()
-  {
+  public static void setUp() {
     WebDriverManager.chromedriver().setup();
     Configuration.browser = "chrome";
     Configuration.driverManagerEnabled = true;
