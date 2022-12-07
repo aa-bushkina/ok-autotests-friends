@@ -11,24 +11,22 @@ import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @Timeout(value = 20000, unit = TimeUnit.MILLISECONDS)
-public class AddSubscriptionTest extends BaseTest
-{
+public class AddSubscriptionTest extends BaseTest {
   final private String NAME_OF_SEARCH_USER1 = "technoPol4 technoPol4";
   final private String NAME_OF_SEARCH_USER2 = "technoPol22 technoPol22";
 
   @BeforeEach
-  public void logIn()
-  {
+  public void logIn() {
     loginPage = (LoginPage) PageFactory.createPage(PageType.Login);
     newsPage = loginPage.logIn(USERNAME, PSWD);
   }
 
   @AfterEach
-  public void logOut()
-  {
+  public void logOut() {
     newsPage.getToolbar().clickActionButton().clickExit().clickExitButton();
   }
 
@@ -36,8 +34,11 @@ public class AddSubscriptionTest extends BaseTest
   @Tag("production")
   @ParameterizedTest
   @ValueSource(strings = {NAME_OF_SEARCH_USER1, NAME_OF_SEARCH_USER2})
-  public void addFriendShouldMakeNewSubscription(final String name)
-  {
+  public void addFriendShouldMakeNewSubscription(final String name) {
+    friendsPage = newsPage.goToFriends();
+    assertThat(friendsPage.getFriendSectionsBlock().isOutgoingRequestsExist(), is(false));
+    newsPage = friendsPage.getToolbar().goToNewsPage();
+
     newsPage.findUser(name).addFriend().getToolbar().goToNewsPage();
 
     friendsPage = newsPage.goToFriends();

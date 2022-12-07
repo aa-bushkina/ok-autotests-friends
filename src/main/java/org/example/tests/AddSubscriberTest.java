@@ -40,6 +40,7 @@ public class AddSubscriberTest extends BaseTest
   public void addFriendShouldMakeNewSubscriber(final String name)
   {
     userPage = newsPage.findUser(name).addFriend();
+
     Selenide.refresh();
     otherFriendsPage = userPage.getNavigationBlock().clickFriends();
 

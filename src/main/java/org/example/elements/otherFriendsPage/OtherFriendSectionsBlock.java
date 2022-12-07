@@ -7,8 +7,8 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class OtherFriendSectionsBlock
 {
-  public final String FRIENDS_SECTIONS = ".//*[@class='nav-side_i-w']";
-  private final String SUBSCRIBERS_COUNT = "//*[@class='lstp-t']";
+  public final String SUBSCRIBERS_SECTIONS = ".//*[@data-l='t,friendSubscribers']";
+  private final String SUBSCRIBERS_COUNT = ".//*[@data-l='t,friendSubscribers']//*[@class='navMenuCount']";
   private final SelenideElement item;
 
   public OtherFriendSectionsBlock(final SelenideElement item)
@@ -23,9 +23,7 @@ public class OtherFriendSectionsBlock
 
   public OtherFriendSectionsBlock clickSubscribers()
   {
-    item.$$x(FRIENDS_SECTIONS)
-      .find(Condition.text("Подписчики"))
-      .shouldBe(Condition.visible)
+    $x(SUBSCRIBERS_SECTIONS)
       .click();
     return this;
   }
