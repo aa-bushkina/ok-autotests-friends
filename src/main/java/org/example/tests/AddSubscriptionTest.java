@@ -1,6 +1,5 @@
 package org.example.tests;
 
-import com.codeborne.selenide.Selenide;
 import org.example.pages.LoginPage;
 import org.example.pages.utils.PageFactory;
 import org.example.pages.utils.PageType;

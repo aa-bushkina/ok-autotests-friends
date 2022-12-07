@@ -8,11 +8,7 @@ import org.example.pages.UserPage;
 import org.example.pages.OtherFriendsPage;
 import org.example.pages.FriendsPage;
 import org.example.pages.LoginPage;
-import org.example.pages.utils.PageFactory;
-import org.example.pages.utils.PageType;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 
 public class BaseTest
 {
