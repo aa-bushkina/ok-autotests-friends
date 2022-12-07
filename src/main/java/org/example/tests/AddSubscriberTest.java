@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @Timeout(value = 20000, unit = TimeUnit.MILLISECONDS)
-public class InviteFriendTest extends BaseTest
+public class AddSubscriberTest extends BaseTest
 {
   final private String NAME_OF_SEARCH_USER1 = "technoPol4 technoPol4";
   final private String NAME_OF_SEARCH_USER2 = "technoPol22 technoPol22";
@@ -31,24 +31,6 @@ public class InviteFriendTest extends BaseTest
   public void logOut()
   {
     newsPage.getToolbar().clickActionButton().clickExit().clickExitButton();
-  }
-
-  @DisplayName("При добавлении в друзья, у добавляющего пользователя появляется в подписках добавлямеый пользователь")
-  @Tag("production")
-  @ParameterizedTest
-  @ValueSource(strings = {NAME_OF_SEARCH_USER1, NAME_OF_SEARCH_USER2})
-  public void addFriendShouldMakeNewSubscription(final String name)
-  {
-    newsPage.findUser(name).addFriend().getToolbar().goToNewsPage();
-
-    friendsPage = newsPage.goToFriends();
-
-    friendsPage.getFriendSectionsBlock().clickOutgoingRequests();
-    assertAll(
-      () -> assertThat(friendsPage.getFriendSectionsBlock().getCountOutgoingRequests(), equalTo(1)),
-      () -> assertThat(friendsPage.getRequestsBlock().findRequestToUser(name), equalTo(name)));
-
-    newsPage.findUser(name).cancelInvite().getToolbar().goToNewsPage();
   }
 
   @DisplayName("При добавлении в друзья, у добавляемого пользователя появляется в подписчиках добавляющий пользователь")
