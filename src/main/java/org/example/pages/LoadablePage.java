@@ -5,7 +5,8 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-public abstract class LoadablePage extends LoadableComponent<FriendsPage>
+@SuppressWarnings("rawtypes")
+public abstract class LoadablePage extends LoadableComponent
 {
   protected String TOOLBAR = "//*[@class='toolbar_c']";
 
